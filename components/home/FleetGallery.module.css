@@ -1,0 +1,1153 @@
+/* ======================================================
+   SECTION
+====================================================== */
+
+.section {
+  position: relative;
+
+  padding:
+    120px
+    0
+    112px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+}
+
+.container {
+  width: min(
+    1280px,
+    calc(100% - 96px)
+  );
+
+  margin: 0 auto;
+}
+
+/* ======================================================
+   HEADING
+====================================================== */
+
+.heading {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.08fr)
+    minmax(330px, 0.92fr);
+
+  gap: 88px;
+
+  align-items: end;
+
+  margin-bottom: 48px;
+}
+
+.headingMain {
+  max-width: 700px;
+}
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+
+  color: #e21b16;
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 32px;
+  height: 3px;
+
+  flex-shrink: 0;
+
+  border-radius: 99px;
+
+  background: #ffd400;
+}
+
+/* ======================================================
+   TITLE
+====================================================== */
+
+.heading h2 {
+  max-width: 690px;
+
+  margin: 0;
+
+  color: #061d35;
+
+  font-family:
+    var(--font-heading);
+
+  font-size:
+    clamp(
+      2.5rem,
+      3.65vw,
+      4rem
+    );
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing:
+    -0.052em;
+
+  text-wrap: balance;
+}
+
+/* ======================================================
+   RIGHT CONTENT
+====================================================== */
+
+.headingAside {
+  max-width: 500px;
+
+  margin-left: auto;
+}
+
+.headingAside p {
+  margin: 0;
+
+  color: #657382;
+
+  font-size: 0.95rem;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+}
+
+/* ======================================================
+   CTA
+====================================================== */
+
+.cta {
+  min-height: 49px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 24px;
+
+  padding:
+    0
+    22px;
+
+  border-radius: 7px;
+
+  background: #e21b16;
+
+  color: #ffffff;
+
+  font-size: 0.83rem;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  box-shadow: none;
+
+  transition:
+    background-color 200ms ease,
+    transform 260ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+.cta:hover {
+  background: #b91410;
+
+  transform: translateY(-2px);
+}
+
+/* ======================================================
+   GALLERY SHELL
+====================================================== */
+
+.galleryShell {
+  position: relative;
+
+  width: 100%;
+}
+
+/* ======================================================
+   HORIZONTAL TRACK
+====================================================== */
+
+.track {
+  display: flex;
+
+  gap: 18px;
+
+  width: 100%;
+
+  overflow-x: auto;
+
+  padding:
+    2px
+    0
+    14px;
+
+  scroll-behavior: smooth;
+
+  scroll-snap-type:
+    x mandatory;
+
+  scrollbar-width: none;
+
+  overscroll-behavior-inline:
+    contain;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+/* ======================================================
+   SLIDE
+====================================================== */
+
+.slide {
+  position: relative;
+
+  flex:
+    0
+    0
+    clamp(
+      340px,
+      31vw,
+      410px
+    );
+
+  height: 275px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(6, 29, 53, 0.08);
+
+  outline: none;
+
+  border-radius: 16px;
+
+  background: #eef1f4;
+
+  cursor: zoom-in;
+
+  scroll-snap-align: start;
+
+  transition:
+    transform 500ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    border-color 300ms ease;
+}
+
+.slide:hover {
+  transform:
+    translateY(-5px);
+
+  border-color:
+    rgba(6, 29, 53, 0.15);
+}
+
+/* ======================================================
+   IMAGE
+====================================================== */
+
+.image {
+  object-fit: cover;
+
+  /*
+   * Mismo tratamiento para todas.
+   * Ayuda a unificar fotos tomadas
+   * en condiciones distintas.
+   */
+
+  filter:
+    saturate(0.94)
+    contrast(1.025);
+
+  transform:
+    scale(1.012);
+
+  transition:
+    transform 900ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    filter 500ms ease;
+}
+
+.slide:hover .image {
+  transform:
+    scale(1.055);
+
+  filter:
+    saturate(1)
+    contrast(1.03);
+}
+
+.slide:focus-visible {
+  outline:
+    2px solid
+    #e21b16;
+
+  outline-offset: 3px;
+}
+
+/* ======================================================
+   CONTROLS
+====================================================== */
+
+.controls {
+  display: grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr)
+    auto;
+
+  gap: 22px;
+
+  align-items: center;
+
+  margin-top: 21px;
+}
+
+/* ======================================================
+   ARROWS
+====================================================== */
+
+.arrowControls {
+  display: flex;
+
+  gap: 8px;
+}
+
+.arrowButton {
+  width: 42px;
+  height: 42px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(6, 29, 53, 0.14);
+
+  outline: none;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+
+  color: #061d35;
+
+  cursor: pointer;
+
+  transition:
+    background 200ms ease,
+    color 200ms ease,
+    border-color 200ms ease,
+    transform 220ms ease;
+}
+
+.arrowButton svg {
+  width: 18px;
+  height: 18px;
+}
+
+.arrowButton:hover {
+  border-color: #061d35;
+
+  background: #061d35;
+
+  color: #ffffff;
+
+  transform:
+    translateY(-2px);
+}
+
+/* ======================================================
+   PROGRESS
+====================================================== */
+
+.progressControl {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+}
+
+.progressRange {
+  --progress: 0%;
+
+  width: 100%;
+  height: 28px;
+
+  margin: 0;
+
+  padding: 0;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  background: transparent;
+
+  cursor: grab;
+}
+
+.progressRange:active {
+  cursor: grabbing;
+}
+
+/* WEBKIT TRACK */
+
+.progressRange::-webkit-slider-runnable-track {
+  width: 100%;
+
+  height: 3px;
+
+  border-radius: 99px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #061d35
+        0%,
+      #061d35
+        var(--progress),
+      #dfe4e9
+        var(--progress),
+      #dfe4e9
+        100%
+    );
+}
+
+/* WEBKIT THUMB */
+
+.progressRange::-webkit-slider-thumb {
+  width: 17px;
+  height: 17px;
+
+  margin-top: -7px;
+
+  appearance: none;
+
+  -webkit-appearance: none;
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius: 50%;
+
+  background: #e21b16;
+
+  box-shadow:
+    0
+    0
+    0
+    1px
+    rgba(6, 29, 53, 0.14);
+}
+
+/* FIREFOX */
+
+.progressRange::-moz-range-track {
+  height: 3px;
+
+  border: 0;
+
+  border-radius: 99px;
+
+  background: #dfe4e9;
+}
+
+.progressRange::-moz-range-progress {
+  height: 3px;
+
+  border-radius: 99px;
+
+  background: #061d35;
+}
+
+.progressRange::-moz-range-thumb {
+  width: 13px;
+  height: 13px;
+
+  border:
+    3px solid
+    #ffffff;
+
+  border-radius: 50%;
+
+  background: #e21b16;
+
+  box-shadow:
+    0
+    0
+    0
+    1px
+    rgba(6, 29, 53, 0.14);
+}
+
+/* ======================================================
+   COUNTER
+====================================================== */
+
+.counter {
+  min-width: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 5px;
+
+  color: #061d35;
+
+  font-family:
+    var(--font-heading);
+
+  font-size: 0.68rem;
+
+  font-weight: 750;
+
+  letter-spacing: 0.08em;
+}
+
+.counter span {
+  color: #9ca6af;
+}
+
+/* ======================================================
+   LIGHTBOX
+====================================================== */
+
+.lightbox {
+  position: fixed;
+
+  z-index: 6000;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 38px;
+
+  background:
+    rgba(
+      3,
+      14,
+      26,
+      0.91
+    );
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 350ms ease,
+    visibility 350ms ease;
+}
+
+.lightboxOpen {
+  opacity: 1;
+
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+/* ======================================================
+   LIGHTBOX INNER
+====================================================== */
+
+.lightboxInner {
+  position: relative;
+
+  width: min(
+    1320px,
+    100%
+  );
+
+  height:
+    min(
+      82vh,
+      780px
+    );
+
+  opacity: 0;
+
+  transform:
+    scale(0.975)
+    translateY(14px);
+
+  transition:
+    opacity 400ms ease,
+    transform 600ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+.lightboxOpen .lightboxInner {
+  opacity: 1;
+
+  transform:
+    scale(1)
+    translateY(0);
+}
+
+/* ======================================================
+   LIGHTBOX IMAGE
+====================================================== */
+
+.lightboxImageWrap {
+  position: absolute;
+
+  inset:
+    42px
+    72px
+    38px;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #071426;
+}
+
+.lightboxImage {
+  object-fit: contain;
+}
+
+/* ======================================================
+   LIGHTBOX CLOSE
+====================================================== */
+
+.lightboxClose {
+  position: absolute;
+
+  z-index: 5;
+
+  top: -5px;
+  right: 0;
+
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  outline: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  color: #ffffff;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1.7rem;
+
+  font-weight: 300;
+
+  cursor: pointer;
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 250ms ease;
+}
+
+.lightboxClose:hover {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.13
+    );
+
+  transform:
+    rotate(90deg);
+}
+
+/* ======================================================
+   LIGHTBOX ARROWS
+====================================================== */
+
+.lightboxArrow {
+  position: absolute;
+
+  z-index: 5;
+
+  top: 50%;
+
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+
+  place-items: center;
+
+  padding: 0;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.22
+    );
+
+  outline: none;
+
+  border-radius: 50%;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.06
+    );
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  transform:
+    translateY(-50%);
+
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 220ms ease;
+}
+
+.lightboxArrow svg {
+  width: 20px;
+  height: 20px;
+}
+
+.lightboxArrow:hover {
+  border-color:
+    rgba(
+      255,
+      255,
+      255,
+      0.55
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.14
+    );
+}
+
+.lightboxArrowLeft {
+  left: 0;
+}
+
+.lightboxArrowRight {
+  right: 0;
+}
+
+/* ======================================================
+   LIGHTBOX COUNTER
+====================================================== */
+
+.lightboxCounter {
+  position: absolute;
+
+  right: 75px;
+  bottom: 5px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  font-family:
+    var(--font-heading);
+
+  font-size: 0.67rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+.lightboxCounter span {
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.35
+    );
+}
+
+/* ======================================================
+   NOTEBOOK
+====================================================== */
+
+@media (max-width: 1100px) {
+  .section {
+    padding:
+      100px
+      0
+      96px;
+  }
+
+  .container {
+    width:
+      min(
+        100% - 60px,
+        1280px
+      );
+  }
+
+  .heading {
+    gap: 55px;
+  }
+
+  .slide {
+    flex-basis:
+      clamp(
+        320px,
+        42vw,
+        380px
+      );
+
+    height: 260px;
+  }
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 850px) {
+  .heading {
+    grid-template-columns:
+      1fr;
+
+    gap: 24px;
+
+    margin-bottom: 38px;
+  }
+
+  .headingAside {
+    max-width: 620px;
+
+    margin: 0;
+  }
+
+  .slide {
+    flex-basis: 46vw;
+
+    height: 255px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 650px) {
+  .section {
+    padding:
+      76px
+      0
+      78px;
+  }
+
+  .container {
+    width:
+      calc(
+        100% - 36px
+      );
+  }
+
+  .heading {
+    margin-bottom: 32px;
+  }
+
+  .eyebrow {
+    margin-bottom: 14px;
+
+    font-size: 0.65rem;
+  }
+
+  .heading h2 {
+    font-size:
+      clamp(
+        2.1rem,
+        9vw,
+        2.7rem
+      );
+
+    line-height: 1.02;
+  }
+
+  .headingAside p {
+    font-size: 0.9rem;
+
+    line-height: 1.65;
+  }
+
+  .cta {
+    width: 100%;
+
+    min-height: 48px;
+
+    margin-top: 19px;
+  }
+
+  /* ==================================================
+     CARRUSEL MOBILE
+  ================================================== */
+
+  .track {
+    gap: 12px;
+
+    margin-right:
+      calc(
+        -1 * 18px
+      );
+
+    padding-bottom: 10px;
+  }
+
+  .slide {
+    flex:
+      0
+      0
+      84vw;
+
+    height: 245px;
+
+    border-radius: 14px;
+  }
+
+  .slide:hover {
+    transform: none;
+  }
+
+  /* ==================================================
+     CONTROLES MOBILE
+  ================================================== */
+
+  .controls {
+    grid-template-columns:
+      auto
+      minmax(0, 1fr);
+
+    gap: 15px;
+
+    margin-top: 17px;
+  }
+
+  .counter {
+    display: none;
+  }
+
+  .arrowButton {
+    width: 39px;
+    height: 39px;
+  }
+
+  /* ==================================================
+     LIGHTBOX MOBILE
+  ================================================== */
+
+  .lightbox {
+    padding: 14px;
+  }
+
+  .lightboxInner {
+    width: 100%;
+    height: 86dvh;
+  }
+
+  .lightboxImageWrap {
+    inset:
+      55px
+      0
+      65px;
+
+    border-radius: 12px;
+  }
+
+  .lightboxClose {
+    top: 0;
+    right: 0;
+
+    width: 41px;
+    height: 41px;
+  }
+
+  .lightboxArrow {
+    top: auto;
+    bottom: 3px;
+
+    width: 42px;
+    height: 42px;
+
+    transform: none;
+  }
+
+  .lightboxArrowLeft {
+    left: 0;
+  }
+
+  .lightboxArrowRight {
+    right: 0;
+  }
+
+  .lightboxCounter {
+    right: 50%;
+    bottom: 16px;
+
+    transform:
+      translateX(50%);
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 390px) {
+  .container {
+    width:
+      calc(
+        100% - 30px
+      );
+  }
+
+  .slide {
+    flex-basis: 86vw;
+
+    height: 230px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .cta,
+  .slide,
+  .image,
+  .arrowButton,
+  .lightbox,
+  .lightboxInner,
+  .lightboxClose,
+  .lightboxArrow {
+    transition: none;
+  }
+}

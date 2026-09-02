@@ -1,0 +1,610 @@
+/* ======================================================
+   SECTION
+====================================================== */
+
+.section {
+  position: relative;
+
+  padding:
+    78px
+    0
+    86px;
+
+  overflow: hidden;
+
+  background: #f7f8fa;
+}
+
+/*
+ * Más ancho que el resto de las secciones.
+ * Esto hace que el banner tenga mayor presencia
+ * y se acerque más a la referencia visual.
+ */
+
+.wrapper {
+  width: min(
+    1440px,
+    calc(100% - 48px)
+  );
+
+  margin: 0 auto;
+}
+
+/* ======================================================
+   BANNER
+====================================================== */
+
+.banner {
+  position: relative;
+
+  width: 100%;
+  min-height: 390px;
+
+  display: flex;
+
+  align-items: center;
+
+  overflow: hidden;
+
+  /*
+   * Bordes moderados.
+   * Nada de cápsula o esquinas exageradas.
+   */
+
+  border-radius: 14px;
+
+  /*
+   * Borde blanco sutil.
+   * Presente, pero mucho más fino que la referencia.
+   */
+
+  border: 4px solid #ffffff;
+
+  background-image:
+    url("/images/home/hero-mineria.webp");
+
+  background-size: cover;
+
+  background-position: center center;
+
+  background-repeat: no-repeat;
+
+  isolation: isolate;
+}
+
+/* ======================================================
+   OVERLAY
+====================================================== */
+
+.overlay {
+  position: absolute;
+
+  z-index: -1;
+
+  inset: 0;
+
+  /*
+   * Oscurecimiento más fuerte detrás del texto,
+   * pero conservando bastante fotografía en el centro
+   * y hacia la derecha.
+   */
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(3, 20, 38, 0.9) 0%,
+      rgba(3, 20, 38, 0.76) 28%,
+      rgba(3, 20, 38, 0.48) 55%,
+      rgba(3, 20, 38, 0.26) 78%,
+      rgba(3, 20, 38, 0.3) 100%
+    );
+}
+
+/* ======================================================
+   INNER
+====================================================== */
+
+.inner {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+
+  min-height: 382px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(220px, 280px);
+
+  gap: 80px;
+
+  align-items: center;
+
+  padding:
+    52px
+    58px;
+}
+
+/* ======================================================
+   CONTENT
+====================================================== */
+
+.content {
+  max-width: 680px;
+}
+
+/* ======================================================
+   EYEBROW
+====================================================== */
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 15px;
+
+  color: #ffd400;
+
+  font-size: 0.66rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+
+  line-height: 1;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 31px;
+  height: 3px;
+
+  flex-shrink: 0;
+
+  border-radius: 99px;
+
+  background: #e21b16;
+}
+
+/* ======================================================
+   TITLE
+====================================================== */
+
+.content h2 {
+  max-width: 670px;
+
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family:
+    var(--font-heading);
+
+  font-size:
+    clamp(
+      2.25rem,
+      3.5vw,
+      3.85rem
+    );
+
+  font-weight: 800;
+
+  line-height: 1.01;
+
+  letter-spacing:
+    -0.05em;
+
+  text-wrap: balance;
+}
+
+/* ======================================================
+   DESCRIPTION
+====================================================== */
+
+.content p {
+  max-width: 570px;
+
+  margin:
+    18px
+    0
+    0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  font-size: 0.93rem;
+
+  font-weight: 400;
+
+  line-height: 1.72;
+}
+
+/* ======================================================
+   ACTIONS
+====================================================== */
+
+.actions {
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 11px;
+}
+
+/* ======================================================
+   BUTTONS BASE
+====================================================== */
+
+.primaryButton,
+.secondaryButton {
+  width: 100%;
+
+  min-height: 52px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    0
+    21px;
+
+  border-radius: 7px;
+
+  font-size: 0.82rem;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  text-align: center;
+
+  text-decoration: none;
+
+  box-shadow: none;
+
+  transition:
+    background-color 200ms ease,
+    border-color 200ms ease,
+    color 200ms ease,
+    transform 260ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      );
+}
+
+/* ======================================================
+   PRIMARY
+====================================================== */
+
+.primaryButton {
+  border:
+    1px solid
+    #cf1d18;
+
+  background:
+    #cf1d18;
+
+  color:
+    #ffffff;
+}
+
+.primaryButton:hover {
+  border-color:
+    #ad1814;
+
+  background:
+    #ad1814;
+
+  transform:
+    translateY(-2px);
+}
+
+/* ======================================================
+   SECONDARY
+====================================================== */
+
+.secondaryButton {
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.82
+    );
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.94
+    );
+
+  color:
+    #061d35;
+}
+
+.secondaryButton:hover {
+  border-color:
+    #ffffff;
+
+  background:
+    #ffffff;
+
+  transform:
+    translateY(-2px);
+}
+
+/* ======================================================
+   ACCESSIBILITY
+====================================================== */
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible {
+  outline:
+    2px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.8
+    );
+
+  outline-offset: 3px;
+}
+
+/* ======================================================
+   LARGE DESKTOP
+====================================================== */
+
+@media (min-width: 1500px) {
+  .wrapper {
+    width:
+      min(
+        1480px,
+        calc(100% - 64px)
+      );
+  }
+
+  .banner {
+    min-height: 410px;
+  }
+
+  .inner {
+    min-height: 402px;
+
+    padding:
+      58px
+      68px;
+  }
+}
+
+/* ======================================================
+   NOTEBOOK
+====================================================== */
+
+@media (max-width: 1150px) {
+  .wrapper {
+    width:
+      calc(100% - 42px);
+  }
+
+  .inner {
+    grid-template-columns:
+      minmax(0, 1fr)
+      230px;
+
+    gap: 45px;
+
+    padding:
+      46px
+      45px;
+  }
+
+  .content h2 {
+    font-size:
+      clamp(
+        2.15rem,
+        4vw,
+        3.4rem
+      );
+  }
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 850px) {
+  .section {
+    padding:
+      68px
+      0
+      74px;
+  }
+
+  .wrapper {
+    width:
+      calc(100% - 36px);
+  }
+
+  .banner {
+    min-height: 460px;
+
+    background-position:
+      58% center;
+  }
+
+  .overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(3, 20, 38, 0.25) 0%,
+        rgba(3, 20, 38, 0.46) 35%,
+        rgba(3, 20, 38, 0.9) 100%
+      );
+  }
+
+  .inner {
+    min-height: 452px;
+
+    grid-template-columns:
+      1fr;
+
+    align-content: end;
+
+    gap: 27px;
+
+    padding:
+      38px
+      35px;
+  }
+
+  .content {
+    max-width: 650px;
+  }
+
+  .actions {
+    max-width: 390px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 600px) {
+  .section {
+    padding:
+      58px
+      0
+      64px;
+  }
+
+  .wrapper {
+    width:
+      calc(100% - 26px);
+  }
+
+  .banner {
+    min-height: 480px;
+
+    border-width: 3px;
+
+    border-radius: 11px;
+
+    background-position:
+      63% center;
+  }
+
+  .inner {
+    min-height: 474px;
+
+    padding:
+      30px
+      23px
+      25px;
+
+    gap: 23px;
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+
+    font-size: 0.61rem;
+  }
+
+  .content h2 {
+    font-size:
+      clamp(
+        2rem,
+        9vw,
+        2.65rem
+      );
+
+    line-height: 1.02;
+  }
+
+  .content p {
+    margin-top: 14px;
+
+    font-size: 0.86rem;
+
+    line-height: 1.62;
+  }
+
+  .actions {
+    max-width: none;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    min-height: 49px;
+
+    border-radius: 6px;
+
+    font-size: 0.8rem;
+  }
+}
+
+/* ======================================================
+   MOBILE 390
+====================================================== */
+
+@media (max-width: 390px) {
+  .wrapper {
+    width:
+      calc(100% - 20px);
+  }
+
+  .banner {
+    min-height: 465px;
+  }
+
+  .inner {
+    min-height: 459px;
+
+    padding:
+      27px
+      19px
+      21px;
+  }
+
+  .content h2 {
+    font-size: 1.95rem;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+}

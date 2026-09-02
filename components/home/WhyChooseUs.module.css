@@ -1,0 +1,612 @@
+/* ======================================================
+   SECTION
+====================================================== */
+
+.section {
+  position: relative;
+
+  padding:
+    118px
+    0
+    124px;
+
+  overflow: hidden;
+
+  background: var(--off-white);
+}
+
+.container {
+  width: min(
+    1280px,
+    calc(100% - 96px)
+  );
+
+  margin: 0 auto;
+}
+
+/* ======================================================
+   HEADING
+====================================================== */
+
+.heading {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.1fr)
+    minmax(320px, 0.9fr);
+
+  gap: 90px;
+
+  align-items: end;
+
+  margin-bottom: 58px;
+}
+
+.headingMain {
+  max-width: 730px;
+}
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 19px;
+
+  color: var(--red);
+
+  font-size: 0.7rem;
+
+  font-weight: 800;
+
+  letter-spacing: 0.15em;
+}
+
+.eyebrow::before {
+  content: "";
+
+  width: 33px;
+  height: 3px;
+
+  flex-shrink: 0;
+
+  border-radius: 999px;
+
+  background: var(--yellow);
+}
+
+.heading h2 {
+  max-width: 720px;
+
+  margin: 0;
+
+  color: var(--navy);
+
+  font-family:
+    var(--font-heading);
+
+  font-size:
+    clamp(
+      2.45rem,
+      3.65vw,
+      4rem
+    );
+
+  font-weight: 800;
+
+  line-height: 1.02;
+
+  letter-spacing:
+    -0.05em;
+
+  text-wrap: balance;
+}
+
+.intro {
+  max-width: 500px;
+
+  margin:
+    0
+    0
+    4px
+    auto;
+
+  color: var(--muted);
+
+  font-size: 0.96rem;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+}
+
+/* ======================================================
+   GRID
+====================================================== */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(0, 1fr)
+    );
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  border:
+    1px solid
+    rgba(6, 29, 53, 0.08);
+}
+
+.cardReveal {
+  height: 100%;
+}
+
+/* ======================================================
+   CARD
+====================================================== */
+
+.card {
+  position: relative;
+
+  min-height: 315px;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding:
+    34px
+    30px
+    35px;
+
+  overflow: hidden;
+
+  color: #ffffff;
+
+  transition:
+    transform 450ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    filter 350ms ease;
+}
+
+/* ======================================================
+   COLORES CORPORATIVOS SUAVIZADOS
+====================================================== */
+
+.cardReveal:nth-child(1)
+  .card {
+  background:
+    #294c67;
+}
+
+.cardReveal:nth-child(2)
+  .card {
+  background:
+    #a94743;
+}
+
+.cardReveal:nth-child(3)
+  .card {
+  background:
+    #506a7c;
+}
+
+.cardReveal:nth-child(4)
+  .card {
+  background:
+    #77682f;
+}
+
+/* ======================================================
+   DIVISORES
+====================================================== */
+
+.cardReveal:not(:last-child)
+  .card::after {
+  content: "";
+
+  position: absolute;
+
+  top: 26px;
+  right: 0;
+  bottom: 26px;
+
+  width: 1px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+}
+
+/* ======================================================
+   LÍNEA SUPERIOR
+====================================================== */
+
+.accentLine {
+  display: block;
+
+  width: 38px;
+  height: 2px;
+
+  margin-bottom: 70px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.82
+    );
+
+  transform-origin:
+    left center;
+
+  transition:
+    width 500ms
+      cubic-bezier(
+        0.22,
+        1,
+        0.36,
+        1
+      ),
+    opacity 300ms ease;
+}
+
+/* ======================================================
+   CONTENT
+====================================================== */
+
+.cardContent {
+  margin-top: auto;
+}
+
+/* ======================================================
+   TITLE
+====================================================== */
+
+.card h3 {
+  max-width: 230px;
+
+  margin:
+    0
+    0
+    14px;
+
+  color: #ffffff;
+
+  font-family:
+    var(--font-heading);
+
+  font-size:
+    clamp(
+      1.35rem,
+      1.5vw,
+      1.65rem
+    );
+
+  font-weight: 750;
+
+  line-height: 1.08;
+
+  letter-spacing:
+    -0.035em;
+}
+
+/* ======================================================
+   DESCRIPTION
+====================================================== */
+
+.card p {
+  max-width: 255px;
+
+  margin: 0;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.76
+    );
+
+  font-size: 0.86rem;
+
+  font-weight: 400;
+
+  line-height: 1.65;
+}
+
+/* ======================================================
+   HOVER
+====================================================== */
+
+.card:hover {
+  transform:
+    translateY(-5px);
+
+  filter:
+    saturate(1.07)
+    brightness(1.03);
+}
+
+.card:hover
+  .accentLine {
+  width: 72px;
+
+  opacity: 1;
+}
+
+/* ======================================================
+   NOTEBOOK
+====================================================== */
+
+@media (max-width: 1100px) {
+  .section {
+    padding:
+      100px
+      0
+      105px;
+  }
+
+  .container {
+    width:
+      min(
+        100% - 60px,
+        1280px
+      );
+  }
+
+  .heading {
+    gap: 52px;
+  }
+
+  .card {
+    min-height: 300px;
+
+    padding:
+      30px
+      24px
+      31px;
+  }
+
+  .accentLine {
+    margin-bottom: 58px;
+  }
+
+  .card h3 {
+    font-size: 1.35rem;
+  }
+}
+
+/* ======================================================
+   TABLET
+====================================================== */
+
+@media (max-width: 900px) {
+  .heading {
+    grid-template-columns:
+      1fr;
+
+    gap: 24px;
+
+    margin-bottom: 44px;
+  }
+
+  .intro {
+    max-width: 620px;
+
+    margin: 0;
+  }
+
+  .grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+  .card {
+    min-height: 270px;
+  }
+
+  .cardReveal:nth-child(2)
+    .card::after {
+    display: none;
+  }
+
+  .cardReveal:nth-child(1)
+    .card,
+  .cardReveal:nth-child(2)
+    .card {
+    border-bottom:
+      1px solid
+      rgba(
+        255,
+        255,
+        255,
+        0.18
+      );
+  }
+
+  .card h3 {
+    font-size: 1.5rem;
+  }
+
+  .card p {
+    max-width: 290px;
+  }
+}
+
+/* ======================================================
+   MOBILE
+====================================================== */
+
+@media (max-width: 650px) {
+  .section {
+    padding:
+      76px
+      0
+      80px;
+  }
+
+  .container {
+    width:
+      calc(
+        100% - 38px
+      );
+  }
+
+  .heading {
+    gap: 22px;
+
+    margin-bottom: 34px;
+  }
+
+  .heading h2 {
+    font-size:
+      clamp(
+        2.05rem,
+        9vw,
+        2.75rem
+      );
+  }
+
+  .intro {
+    font-size: 0.9rem;
+
+    line-height: 1.66;
+  }
+
+  .grid {
+    grid-template-columns:
+      1fr;
+
+    border-radius: 9px;
+  }
+
+  .card {
+    min-height: 220px;
+
+    padding:
+      26px
+      23px
+      27px;
+  }
+
+  /*
+   * En móvil usamos separadores
+   * horizontales.
+   */
+
+  .cardReveal:not(:last-child)
+    .card::after {
+    top: auto;
+
+    right: 22px;
+    bottom: 0;
+    left: 22px;
+
+    width: auto;
+    height: 1px;
+
+    background:
+      rgba(
+        255,
+        255,
+        255,
+        0.2
+      );
+  }
+
+  .cardReveal:nth-child(2)
+    .card::after {
+    display: block;
+  }
+
+  .cardReveal:nth-child(1)
+    .card,
+  .cardReveal:nth-child(2)
+    .card {
+    border-bottom: 0;
+  }
+
+  .accentLine {
+    width: 35px;
+
+    margin-bottom: 43px;
+  }
+
+  .cardContent {
+    margin-top: 0;
+  }
+
+  .card h3 {
+    max-width: 100%;
+
+    font-size: 1.5rem;
+  }
+
+  .card p {
+    max-width: 100%;
+
+    font-size: 0.86rem;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+/* ======================================================
+   SMALL MOBILE
+====================================================== */
+
+@media (max-width: 390px) {
+  .container {
+    width:
+      calc(
+        100% - 30px
+      );
+  }
+
+  .card {
+    min-height: 210px;
+
+    padding:
+      24px
+      20px
+      25px;
+  }
+}
+
+/* ======================================================
+   REDUCED MOTION
+====================================================== */
+
+@media (
+  prefers-reduced-motion:
+  reduce
+) {
+  .card,
+  .accentLine {
+    transition: none;
+  }
+}

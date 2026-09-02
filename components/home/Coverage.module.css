@@ -1,0 +1,244 @@
+.section {
+  position: relative;
+  padding: 92px 0 110px;
+  background: var(--off-white);
+}
+
+.container {
+  width: min(1280px, calc(100% - 96px));
+  margin: 0 auto;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  min-height: 370px;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(3, 20, 38, 0.82) 0%,
+      rgba(3, 20, 38, 0.68) 30%,
+      rgba(3, 20, 38, 0.42) 56%,
+      rgba(3, 20, 38, 0.2) 100%
+    ),
+    url("/images/coverageima/Calama-paisaje-contacto.webp");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: 1px solid rgba(6, 29, 53, 0.08);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    rgba(3, 20, 38, 0.08) 100%
+  );
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  min-height: 370px;
+  padding: 54px 56px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 42px;
+}
+
+.content {
+  max-width: 640px;
+}
+
+.content h2 {
+  margin: 0;
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.1vw, 3.4rem);
+  line-height: 1.02;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.content p {
+  max-width: 560px;
+  margin: 18px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1rem;
+  line-height: 1.72;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+  min-width: 230px;
+}
+
+.primaryButton,
+.secondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 22px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.primaryButton {
+  background: var(--red);
+  border: 1px solid var(--red);
+  color: #ffffff;
+}
+
+.primaryButton:hover {
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+  transform: translateY(-2px);
+}
+
+.secondaryButton {
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.96);
+  color: var(--navy);
+}
+
+.secondaryButton:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.primaryButton:focus-visible,
+.secondaryButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
+}
+
+@media (max-width: 1100px) {
+  .container {
+    width: min(100% - 64px, 1280px);
+  }
+
+  .inner {
+    padding: 46px 42px;
+    gap: 28px;
+  }
+
+  .content h2 {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+  }
+
+  .actions {
+    min-width: 210px;
+  }
+}
+
+@media (max-width: 860px) {
+  .section {
+    padding: 78px 0 90px;
+  }
+
+  .card {
+    min-height: 420px;
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(3, 20, 38, 0.25) 0%,
+        rgba(3, 20, 38, 0.5) 38%,
+        rgba(3, 20, 38, 0.88) 100%
+      ),
+      url("/images/coverageima/Calama-paisaje-contacto.webp");
+    background-position: center center;
+  }
+
+  .inner {
+    min-height: 420px;
+    grid-template-columns: 1fr;
+    align-content: end;
+    padding: 38px 34px;
+    gap: 24px;
+  }
+
+  .content {
+    max-width: 100%;
+  }
+
+  .content p {
+    max-width: 100%;
+  }
+
+  .actions {
+    width: 100%;
+    min-width: 0;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 0 76px;
+  }
+
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .card {
+    border-radius: 22px;
+    min-height: 430px;
+  }
+
+  .inner {
+    min-height: 430px;
+    padding: 30px 24px 26px;
+    gap: 20px;
+  }
+
+  .content h2 {
+    font-size: clamp(1.8rem, 8vw, 2.45rem);
+    line-height: 1.04;
+  }
+
+  .content p {
+    margin-top: 14px;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .actions {
+    max-width: none;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 9px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryButton,
+  .secondaryButton {
+    transition: none;
+  }
+}

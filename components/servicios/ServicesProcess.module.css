@@ -1,0 +1,148 @@
+.container {
+  width: min(1280px, calc(100% - 96px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 19px;
+  color: var(--red);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 33px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--yellow);
+}
+
+.process {
+  padding: 115px 0;
+  background: #fff;
+}
+
+.processHeading {
+  max-width: 760px;
+  margin-bottom: 55px;
+}
+
+.processHeading h2 {
+  margin: 0;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 3.6vw, 4rem);
+  line-height: 1.03;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(6, 29, 53, 0.11);
+  border-bottom: 1px solid rgba(6, 29, 53, 0.11);
+}
+
+.step {
+  min-height: 290px;
+  padding: 34px 28px;
+  border-right: 1px solid rgba(6, 29, 53, 0.11);
+}
+
+.step:last-child {
+  border-right: 0;
+}
+
+.stepNumber {
+  color: var(--red);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.stepLine {
+  width: 36px;
+  height: 2px;
+  margin: 22px 0 47px;
+  background: var(--yellow);
+  transition: width 250ms ease;
+}
+
+.step:hover .stepLine {
+  width: 64px;
+}
+
+.step h3 {
+  margin: 0 0 13px;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 1.45rem;
+  line-height: 1.08;
+}
+
+.step p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: min(100% - 56px, 1280px);
+  }
+
+  .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .step:nth-child(2) {
+    border-right: 0;
+  }
+
+  .step:nth-child(1),
+  .step:nth-child(2) {
+    border-bottom: 1px solid rgba(6, 29, 53, 0.11);
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .process {
+    padding: 80px 0;
+  }
+
+  .processHeading h2 {
+    font-size: 2.55rem;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .step {
+    min-height: auto;
+    padding: 28px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(6, 29, 53, 0.11);
+  }
+
+  .stepLine {
+    margin: 18px 0 25px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stepLine {
+    transition: none;
+  }
+}

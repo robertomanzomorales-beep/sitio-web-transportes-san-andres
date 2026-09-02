@@ -1,0 +1,123 @@
+.container {
+  width: min(1280px, calc(100% - 96px));
+  margin: 0 auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 19px;
+  color: var(--red);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.eyebrow::before {
+  content: "";
+  width: 33px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--yellow);
+}
+
+.contactSection {
+  padding: 110px 0;
+  background: #fff;
+}
+
+.contactGrid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 90px;
+  align-items: start;
+}
+
+.contactGrid h2 {
+  margin: 0;
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 3.5vw, 3.8rem);
+  line-height: 1;
+  letter-spacing: -0.045em;
+}
+
+.contactGrid > div:first-child p {
+  max-width: 430px;
+  margin: 20px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.contactCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(6, 29, 53, 0.11);
+  border-bottom: 1px solid rgba(6, 29, 53, 0.11);
+}
+
+.contactCard {
+  min-height: 170px;
+  padding: 29px 24px;
+  border-right: 1px solid rgba(6, 29, 53, 0.11);
+}
+
+.contactCard:last-child {
+  border-right: 0;
+}
+
+.contactCard > span {
+  display: block;
+  margin-bottom: 22px;
+  color: var(--red);
+  font-size: 0.61rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.contactCard a,
+.contactCard strong {
+  color: var(--navy);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  line-height: 1.55;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: min(100% - 56px, 1280px);
+  }
+
+  .contactGrid {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+}
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .contactSection {
+    padding: 80px 0;
+  }
+
+  .contactCards {
+    grid-template-columns: 1fr;
+  }
+
+  .contactCard {
+    min-height: auto;
+    padding: 24px 0;
+    border-right: 0;
+    border-bottom: 1px solid rgba(6, 29, 53, 0.11);
+  }
+
+  .contactCard:last-child {
+    border-bottom: 0;
+  }
+}
