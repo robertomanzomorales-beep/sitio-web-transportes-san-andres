@@ -119,10 +119,10 @@ export default function Footer() {
               </a>
 
               <a
-                href="mailto:admsandres@gmail.com"
+                href="mailto:contacto@transportesanandres.cl"
                 className={styles.contactMain}
               >
-                admsandres@gmail.com
+                contacto@transportesanandres.cl
               </a>
 
               <a
@@ -156,7 +156,7 @@ export default function Footer() {
             </div>
 
             <span className={styles.developed}>
-              Sitio desarrollado por{" "}
+              Sitio desarrollado y potenciado por{" "}
               <a
                 href="https://vialoop.cl"
                 target="_blank"
@@ -184,8 +184,8 @@ export default function Footer() {
           </div>
 
           <div className={styles.bottomContact}>
-            <a href="mailto:admsandres@gmail.com">
-              admsandres@gmail.com
+            <a href="mailto:contacto@transportesanandres.cl">
+              contacto@transportesanandres.cl
             </a>
 
             <span className={styles.separator} />

@@ -35,8 +35,8 @@ export default function ServicesContact() {
             >
               <span>CORREO ELECTRÓNICO</span>
 
-              <a href="mailto:admsandres@gmail.com">
-                admsandres@gmail.com
+              <a href="mailto:contacto@transportesanandres.cl">
+                contacto@transportesanandres.cl
               </a>
             </Reveal>
 

@@ -224,7 +224,7 @@ export default function Header() {
           <div className={styles.topBar}>
             <div className={styles.topBarContent}>
               <a
-                href="mailto:admsandres@gmail.com"
+                href="mailto:contacto@transportesanandres.cl"
                 className={styles.emailLink}
               >
                 <Image
@@ -235,7 +235,23 @@ export default function Header() {
                   className={styles.emailIcon}
                 />
 
-                <span>admsandres@gmail.com</span>
+                <span>contacto@transportesanandres.cl</span>
+              </a>
+
+              <a
+                href="tel:+56926273108"
+                className={styles.emailLink}
+                aria-label="Llamar al +56 9 2627 3108"
+              >
+                <Image
+                  src="/images/icono-telefono.webp"
+                  alt=""
+                  width={18}
+                  height={18}
+                  className={styles.emailIcon}
+                />
+
+                <span>+56 9 2627 3108</span>
               </a>
             </div>
           </div>
@@ -378,11 +394,11 @@ export default function Header() {
                 </button>
 
                 <a
-                  href="mailto:admsandres@gmail.com"
+                  href="mailto:contacto@transportesanandres.cl"
                   className={styles.mobileEmail}
                   tabIndex={menuOpen ? 0 : -1}
                 >
-                  admsandres@gmail.com
+                  contacto@transportesanandres.cl
                 </a>
               </div>
             </div>
