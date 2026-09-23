@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
+import Script from "next/script";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 
 import "./globals.css";
+
+const googleTagId = "G-L60FMRDGF5";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +41,18 @@ export default function RootLayout({
 
         <Footer />
       </body>
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+        strategy="afterInteractive"
+      />
+      <Script id="google-tag" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${googleTagId}');
+        `}
+      </Script>
     </html>
   );
 }

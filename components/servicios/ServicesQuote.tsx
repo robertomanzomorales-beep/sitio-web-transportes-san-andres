@@ -53,6 +53,16 @@ export default function ServicesQuote() {
       form.reset();
       setSent(true);
 
+      try {
+        const gtag = (window as Window & {
+          gtag?: (...args: unknown[]) => void;
+        }).gtag;
+
+        gtag?.("event", "generate_lead", { method: "website_form" });
+      } catch {
+        // Un fallo de medición no debe afectar una solicitud ya enviada.
+      }
+
       window.setTimeout(() => {
         document
           .getElementById("cotizacion")
