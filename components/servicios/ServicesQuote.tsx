@@ -59,6 +59,9 @@ export default function ServicesQuote() {
         }).gtag;
 
         gtag?.("event", "generate_lead", { method: "website_form" });
+        gtag?.("event", "conversion", {
+          send_to: "AW-17733887884/wM2TCPbGnMcbEIzPlohC",
+        });
       } catch {
         // Un fallo de medición no debe afectar una solicitud ya enviada.
       }

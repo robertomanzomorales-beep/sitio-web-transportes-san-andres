@@ -8,6 +8,7 @@ import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const googleTagId = "G-L60FMRDGF5";
+const googleAdsId = "AW-17733887884";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -40,19 +41,21 @@ export default function RootLayout({
         {children}
 
         <Footer />
+
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${googleTagId}');
+            gtag('config', '${googleAdsId}');
+          `}
+        </Script>
       </body>
-      <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}
-        strategy="afterInteractive"
-      />
-      <Script id="google-tag" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${googleTagId}');
-        `}
-      </Script>
     </html>
   );
 }
