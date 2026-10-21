@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Reveal from "@/components/ui/Reveal";
+import TrackedWhatsAppLink from "@/components/ui/TrackedWhatsAppLink";
 
 import styles from "./FinalCTA.module.css";
 
@@ -61,14 +62,15 @@ export default function FinalCTA() {
                 Cotizar servicio
               </Link>
 
-              <a
+              <TrackedWhatsAppLink
                 href="https://wa.me/56926273108?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio%20de%20transporte."
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.secondaryButton}
+                location="home_final_cta"
               >
                 Contactar por WhatsApp
-              </a>
+              </TrackedWhatsAppLink>
             </Reveal>
           </div>
         </Reveal>

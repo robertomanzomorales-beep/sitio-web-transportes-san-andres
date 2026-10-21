@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useRef } from "react";
 import type { FormEvent } from "react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 import styles from "./QuickQuote.module.css";
 
 function formatDate(value: string) {
@@ -66,18 +67,19 @@ export default function QuickQuote() {
       `Tipo de servicio: ${service}`,
       `Origen: ${origin}`,
       `Destino: ${destination}`,
-      `Fecha: ${formatDate(date)}`,
-      `Horario: ${time}`,
-      `Cantidad de pasajeros: ${passengers}`,
+      date ? `Fecha: ${formatDate(date)}` : "Fecha: por definir",
+      time ? `Horario: ${time}` : "",
+      passengers ? `Cantidad de pasajeros: ${passengers}` : "",
       "",
       "Quedo atento(a) a la disponibilidad y valor del traslado.",
-    ].join("\n");
+    ].filter(Boolean).join("\n");
 
     const whatsappUrl = `https://wa.me/56926273108?text=${encodeURIComponent(
       message,
     )}`;
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    trackWhatsAppClick("home_quick_quote", service);
   }
 
   return (
@@ -99,8 +101,8 @@ export default function QuickQuote() {
             </div>
 
             <p>
-              Complete los datos principales. Confirmaremos disponibilidad y
-              valor directamente por WhatsApp.
+              Indíquenos el recorrido. Puede precisar fecha y horario después;
+              confirmaremos disponibilidad y valor por WhatsApp.
             </p>
           </div>
 
@@ -177,25 +179,24 @@ export default function QuickQuote() {
             </div>
 
             <label className={`${styles.field} ${styles.dateField}`}>
-              <span>Fecha</span>
+              <span>Fecha (si la conoce)</span>
 
-              <input type="date" name="date" required />
+              <input type="date" name="date" />
             </label>
 
             <label className={`${styles.field} ${styles.timeField}`}>
-              <span>Horario</span>
+              <span>Horario (opcional)</span>
 
-              <input type="time" name="time" required />
+              <input type="time" name="time" />
             </label>
 
             <label className={`${styles.field} ${styles.passengersField}`}>
-              <span>Pasajeros</span>
+              <span>Pasajeros (si corresponde)</span>
 
               <input
                 type="number"
                 name="passengers"
                 min="1"
-                required
                 placeholder="1"
                 inputMode="numeric"
               />

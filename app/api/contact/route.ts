@@ -62,13 +62,9 @@ export async function POST(request: Request) {
     if (
       !name ||
       !phone ||
-      !email ||
       !service ||
       !origin ||
-      !destination ||
-      !date ||
-      !time ||
-      !passengers
+      !destination
     ) {
       return NextResponse.json(
         {
@@ -81,7 +77,7 @@ export async function POST(request: Request) {
       );
     }
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         {
           ok: false,
@@ -147,13 +143,13 @@ export async function POST(request: Request) {
       name: escapeHtml(name),
       company: escapeHtml(company || "No informado"),
       phone: escapeHtml(phone),
-      email: escapeHtml(email),
+      email: escapeHtml(email || "No informado"),
       service: escapeHtml(serviceLabel(service)),
       origin: escapeHtml(origin),
       destination: escapeHtml(destination),
-      date: escapeHtml(date),
-      time: escapeHtml(time),
-      passengers: escapeHtml(passengers),
+      date: escapeHtml(date || "Por definir"),
+      time: escapeHtml(time || "Por definir"),
+      passengers: escapeHtml(passengers || "No informado"),
       message: escapeHtml(
         message || "Sin información adicional"
       ).replaceAll("\n", "<br />"),
@@ -165,7 +161,7 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: `"${mailFromName}" <${smtpUser}>`,
       to: mailTo,
-      replyTo: email,
+      ...(email ? { replyTo: email } : {}),
       subject: `Nueva solicitud de cotización - ${name}`,
       text: [
         "Nueva solicitud de cotización",
@@ -173,13 +169,13 @@ export async function POST(request: Request) {
         `Nombre: ${name}`,
         `Empresa o institución: ${company || "No informado"}`,
         `Teléfono: ${phone}`,
-        `Correo: ${email}`,
+        `Correo: ${email || "No informado"}`,
         `Servicio: ${serviceLabel(service)}`,
         `Origen: ${origin}`,
         `Destino: ${destination}`,
-        `Fecha: ${date}`,
-        `Horario: ${time}`,
-        `Pasajeros: ${passengers}`,
+        `Fecha: ${date || "Por definir"}`,
+        `Horario: ${time || "Por definir"}`,
+        `Pasajeros: ${passengers || "No informado"}`,
         "",
         "Información adicional:",
         message || "Sin información adicional",
@@ -308,7 +304,9 @@ export async function POST(request: Request) {
     /*
      * RESPUESTA AUTOMÁTICA PARA EL CLIENTE
      */
-    await transporter.sendMail({
+    if (email) {
+      try {
+        await transporter.sendMail({
       from: `"${mailFromName}" <${smtpUser}>`,
       to: email,
       replyTo: mailTo,
@@ -322,9 +320,9 @@ export async function POST(request: Request) {
         `Servicio: ${serviceLabel(service)}`,
         `Origen: ${origin}`,
         `Destino: ${destination}`,
-        `Fecha: ${date}`,
-        `Horario: ${time}`,
-        `Pasajeros: ${passengers}`,
+        `Fecha: ${date || "Por definir"}`,
+        `Horario: ${time || "Por definir"}`,
+        `Pasajeros: ${passengers || "No informado"}`,
         "",
         "Transportes San Andrés SpA",
         "Calama - Región de Antofagasta",
@@ -380,7 +378,12 @@ export async function POST(request: Request) {
           </div>
         </div>
       `,
-    });
+        });
+      } catch (error) {
+        // La solicitud llegó al equipo: un fallo del acuse no debe pedir un reenvío.
+        console.error("No se pudo enviar el acuse de cotización:", error);
+      }
+    }
 
     return NextResponse.json({
       ok: true,

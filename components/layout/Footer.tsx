@@ -1,4 +1,5 @@
 import Link from "next/link";
+import TrackedWhatsAppLink from "@/components/ui/TrackedWhatsAppLink";
 
 import styles from "./Footer.module.css";
 
@@ -83,11 +84,11 @@ export default function Footer() {
                 Transporte de pasajeros
               </Link>
 
-              <Link href="/servicios">
+              <Link href="/transporte-empresas-calama">
                 Servicios para empresas
               </Link>
 
-              <Link href="/servicios">
+              <Link href="/transporte-empresas-calama">
                 Traslados a faenas mineras
               </Link>
 
@@ -125,14 +126,15 @@ export default function Footer() {
                 contacto@transportesanandres.cl
               </a>
 
-              <a
+              <TrackedWhatsAppLink
                 href="https://wa.me/56926273108"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.whatsapp}
+                location="footer"
               >
                 Contactar por WhatsApp
-              </a>
+              </TrackedWhatsAppLink>
             </div>
           </div>
         </div>

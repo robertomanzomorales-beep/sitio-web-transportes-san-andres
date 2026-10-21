@@ -17,7 +17,7 @@ const slides = [
     description:
       "Coordinamos traslados de personal desde Calama hacia faenas mineras y operaciones industriales de la Región de Antofagasta.",
     button: "Cotizar traslado empresarial",
-    href: "/servicios#cotizacion",
+    href: "/transporte-empresas-calama#cotizacion",
     position: "left",
     imagePosition: "center center",
   },

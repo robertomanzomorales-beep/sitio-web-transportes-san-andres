@@ -8,6 +8,7 @@ import type {
   FormEvent,
   MouseEvent as ReactMouseEvent,
 } from "react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 import styles from "./Header.module.css";
 
@@ -208,6 +209,7 @@ export default function Header() {
     )}`;
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    trackWhatsAppClick("header_quote");
 
     form.reset();
     setQuoteOpen(false);

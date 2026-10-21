@@ -1,13 +1,26 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Reveal from "@/components/ui/Reveal";
+import TrackedWhatsAppLink from "@/components/ui/TrackedWhatsAppLink";
 import styles from "./ServicesQuote.module.css";
 
-export default function ServicesQuote() {
+export default function ServicesQuote({ initialService = "" }: { initialService?: string }) {
+  const serviceRef = useRef<HTMLSelectElement>(null);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const requestedService = new URLSearchParams(window.location.search).get("servicio");
+    if (
+      requestedService &&
+      ["corporativo", "mineria", "turismo", "especial", "encomienda"].includes(requestedService) &&
+      serviceRef.current
+    ) {
+      serviceRef.current.value = requestedService;
+    }
+  }, []);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -58,7 +71,10 @@ export default function ServicesQuote() {
           gtag?: (...args: unknown[]) => void;
         }).gtag;
 
-        gtag?.("event", "generate_lead", { method: "website_form" });
+        gtag?.("event", "generate_lead", {
+          method: "website_form",
+          service_type: payload.service,
+        });
         gtag?.("event", "conversion", {
           send_to: "AW-17733887884/wM2TCPbGnMcbEIzPlohC",
         });
@@ -98,9 +114,8 @@ export default function ServicesQuote() {
             <h2>Cuéntenos qué traslado necesita</h2>
 
             <p>
-              Complete los antecedentes principales del recorrido. Revisaremos
-              la información para preparar una respuesta de acuerdo con el
-              servicio solicitado.
+              Díganos cómo contactarlo y qué recorrido necesita. Si todavía
+              no conoce la fecha u horario, podremos coordinarlos después.
             </p>
 
             <div className={styles.quoteFacts}>
@@ -124,13 +139,14 @@ export default function ServicesQuote() {
 
             <div className={styles.directContact}>
               <span>¿PREFIERE CONTACTO DIRECTO?</span>
-              <a
+              <TrackedWhatsAppLink
                 href="https://wa.me/56926273108?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio%20de%20transporte."
                 target="_blank"
                 rel="noopener noreferrer"
+                location="services_quote"
               >
                 +56 9 2627 3108
-              </a>
+              </TrackedWhatsAppLink>
             </div>
           </Reveal>
 
@@ -182,11 +198,10 @@ export default function ServicesQuote() {
                   </label>
 
                   <label>
-                    <span>Correo electrónico *</span>
+                    <span>Correo electrónico (opcional)</span>
                     <input
                       type="email"
                       name="email"
-                      required
                       autoComplete="email"
                       placeholder="correo@empresa.cl"
                     />
@@ -195,7 +210,7 @@ export default function ServicesQuote() {
 
                 <label>
                   <span>Tipo de servicio *</span>
-                  <select name="service" required defaultValue="">
+                  <select ref={serviceRef} name="service" required defaultValue={initialService}>
                     <option value="" disabled>
                       Seleccione una alternativa
                     </option>
@@ -232,21 +247,20 @@ export default function ServicesQuote() {
 
                 <div className={styles.threeColumns}>
                   <label>
-                    <span>Fecha *</span>
-                    <input type="date" name="date" required />
+                    <span>Fecha (si la conoce)</span>
+                    <input type="date" name="date" />
                   </label>
 
                   <label>
-                    <span>Horario *</span>
-                    <input type="time" name="time" required />
+                    <span>Horario (opcional)</span>
+                    <input type="time" name="time" />
                   </label>
 
                   <label>
-                    <span>Pasajeros *</span>
+                    <span>Pasajeros (si corresponde)</span>
                     <input
                       type="number"
                       name="passengers"
-                      required
                       min="1"
                       placeholder="1"
                     />
