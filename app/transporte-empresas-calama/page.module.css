@@ -4,22 +4,27 @@
   min-height: 410px;
   display: flex;
   align-items: center;
-  border-radius: 18px;
+  border-radius: 20px;
   overflow: hidden;
   color: #fff;
   background: linear-gradient(90deg, rgba(3,20,38,.97) 0%, rgba(3,20,38,.84) 58%, rgba(3,20,38,.3) 100%), url('/images/home/hero-mineria.webp') center / cover;
 }
-.content { width: min(800px, calc(100% - 40px)); margin: 54px max(24px, calc((100% - 1280px) / 2)); }
+.content { width: min(760px, calc(100% - 40px)); margin: 68px max(24px, calc((100% - 1280px) / 2)); }
 .eyebrow { color: var(--yellow); font-size: .75rem; font-weight: 800; letter-spacing: .13em; }
-.content h1 { font-family: var(--font-heading); font-size: clamp(2.25rem, 4.4vw, 3.75rem); line-height: 1.08; letter-spacing: -.045em; margin: 22px 0; }
-.content p { font-size: 1.05rem; line-height: 1.65; max-width: 660px; }
+.content h1 { font-family: var(--font-heading); font-size: clamp(2.25rem, 3.8vw, 3.5rem); line-height: 1.09; letter-spacing: -.045em; margin: 22px 0; }
+.content p { font-size: 1rem; line-height: 1.65; max-width: 660px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
 .actions a { display: inline-flex; align-items: center; min-height: 50px; padding: 12px 20px; border-radius: 5px; font-weight: 750; text-decoration: none; }
 .primary { background: var(--red); color: white; }
 .secondary { border: 1px solid rgba(255,255,255,.8); color: white; }
 .actions a:hover, .actions a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
 .content .contactNote { font-size: .82rem; margin: 14px 0 0; color: rgba(255,255,255,.85); }
-.quoteSection { overflow-x: clip; }
+.quoteSection {
+  width: min(1600px, calc(100% - 48px));
+  margin: 44px auto 0;
+  border-radius: 20px;
+  overflow: clip;
+}
 .quoteSection :global(#cotizacion) { padding-top: 70px; padding-bottom: 88px; scroll-margin-top: 80px; }
 .details { width: min(1280px, calc(100% - 96px)); margin: 0 auto; padding: 82px 0 95px; }
 .detailsHeading { max-width: 680px; }
@@ -32,10 +37,11 @@
 .detailGrid p { margin: 8px 0 0; color: var(--muted); line-height: 1.55; }
 .servicesLink { color: var(--red-dark); font-weight: 750; text-underline-offset: 4px; }
 @media (max-width: 760px) {
-  .intro { width: calc(100% - 24px); min-height: 460px; background-position: 65% center; }
-  .content { margin: 42px 22px; }
+  .intro { width: calc(100% - 24px); min-height: 460px; border-radius: 16px; background-position: 65% center; }
+  .content { margin: 46px 22px; }
   .content h1 { font-size: clamp(2.1rem, 8vw, 3.1rem); }
   .actions a { justify-content: center; width: 100%; text-align: center; }
+  .quoteSection { width: calc(100% - 24px); margin-top: 24px; border-radius: 16px; }
   .quoteSection :global(#cotizacion) { padding-top: 58px; padding-bottom: 70px; }
   .details { width: calc(100% - 40px); padding: 65px 0 80px; }
   .detailGrid { grid-template-columns: 1fr; gap: 25px; }
