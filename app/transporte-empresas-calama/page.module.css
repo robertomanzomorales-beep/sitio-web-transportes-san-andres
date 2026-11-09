@@ -19,6 +19,7 @@
 .secondary { border: 1px solid rgba(255,255,255,.8); color: white; }
 .actions a:hover, .actions a:focus-visible { outline: 2px solid var(--yellow); outline-offset: 3px; }
 .content .contactNote { font-size: .82rem; margin: 14px 0 0; color: rgba(255,255,255,.85); }
+.quoteSection { overflow-x: clip; }
 .quoteSection :global(#cotizacion) { padding-top: 70px; padding-bottom: 88px; scroll-margin-top: 80px; }
 .details { width: min(1280px, calc(100% - 96px)); margin: 0 auto; padding: 82px 0 95px; }
 .detailsHeading { max-width: 680px; }
