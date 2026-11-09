@@ -6,6 +6,7 @@ import TrackedWhatsAppLink from "@/components/ui/TrackedWhatsAppLink";
 import styles from "./ServicesQuote.module.css";
 
 export default function ServicesQuote({ initialService = "" }: { initialService?: string }) {
+  const isCorporateQuote = initialService === "corporativo";
   const serviceRef = useRef<HTMLSelectElement>(null);
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -27,6 +28,7 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const query = new URLSearchParams(window.location.search);
 
     const payload = {
       name: String(formData.get("name") ?? "").trim(),
@@ -40,6 +42,7 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
       time: String(formData.get("time") ?? "").trim(),
       passengers: String(formData.get("passengers") ?? "").trim(),
       message: String(formData.get("message") ?? "").trim(),
+      adsClickIdPresent: ["gclid", "gbraid", "wbraid"].some((key) => query.has(key)),
     };
 
     setSending(true);
@@ -111,11 +114,12 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
               SOLICITE UNA COTIZACIÓN
             </span>
 
-            <h2>Cuéntenos qué traslado necesita</h2>
+            <h2>{isCorporateQuote ? "Cotice el traslado de su personal" : "Cuéntenos qué traslado necesita"}</h2>
 
             <p>
-              Díganos cómo contactarlo y qué recorrido necesita. Si todavía
-              no conoce la fecha u horario, podremos coordinarlos después.
+              {isCorporateQuote
+                ? "Comparta su ruta, número de pasajeros y horarios. Revisaremos los antecedentes para coordinar una alternativa acorde con su operación."
+                : "Díganos cómo contactarlo y qué recorrido necesita. Si todavía no conoce la fecha u horario, podremos coordinarlos después."}
             </p>
 
             <div className={styles.quoteFacts}>
@@ -140,7 +144,9 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
             <div className={styles.directContact}>
               <span>¿PREFIERE CONTACTO DIRECTO?</span>
               <TrackedWhatsAppLink
-                href="https://wa.me/56926273108?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio%20de%20transporte."
+                href={isCorporateQuote
+                  ? "https://wa.me/56926273108?text=Hola%2C%20necesito%20cotizar%20transporte%20de%20personal%20para%20una%20empresa%20desde%20Calama."
+                  : "https://wa.me/56926273108?text=Hola%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20un%20servicio%20de%20transporte."}
                 target="_blank"
                 rel="noopener noreferrer"
                 location="services_quote"
@@ -160,7 +166,7 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.formHeading}>
                   <span>COTIZACIÓN</span>
-                  <h3>Datos del traslado</h3>
+                  <h3>{isCorporateQuote ? "Datos para cotizar" : "Datos del traslado"}</h3>
                 </div>
 
                 <div className={styles.twoColumns}>
@@ -240,7 +246,7 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
                       type="text"
                       name="destination"
                       required
-                      placeholder="Ej. San Pedro de Atacama"
+                      placeholder={isCorporateQuote ? "Ej. faena o punto de destino" : "Ej. San Pedro de Atacama"}
                     />
                   </label>
                 </div>
@@ -272,7 +278,9 @@ export default function ServicesQuote({ initialService = "" }: { initialService?
                   <textarea
                     name="message"
                     rows={5}
-                    placeholder="Indique condiciones especiales, recorrido, equipaje u otra información relevante."
+                    placeholder={isCorporateQuote
+                      ? "Indique turnos, frecuencia, puntos de recogida u otra condición del traslado."
+                      : "Indique condiciones especiales, recorrido, equipaje u otra información relevante."}
                   />
                 </label>
 

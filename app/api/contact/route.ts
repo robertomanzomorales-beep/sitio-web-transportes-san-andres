@@ -15,6 +15,7 @@ type ContactPayload = {
   time?: string;
   passengers?: string;
   message?: string;
+  adsClickIdPresent?: boolean;
 };
 
 function clean(value: unknown) {
@@ -58,6 +59,7 @@ export async function POST(request: Request) {
     const time = clean(body.time);
     const passengers = clean(body.passengers);
     const message = clean(body.message);
+    const adsClickIdPresent = body.adsClickIdPresent === true;
 
     if (
       !name ||
@@ -176,6 +178,7 @@ export async function POST(request: Request) {
         `Fecha: ${date || "Por definir"}`,
         `Horario: ${time || "Por definir"}`,
         `Pasajeros: ${passengers || "No informado"}`,
+        `Identificador de Google Ads en la URL al enviar: ${adsClickIdPresent ? "Sí" : "No"}`,
         "",
         "Información adicional:",
         message || "Sin información adicional",
@@ -282,6 +285,14 @@ export async function POST(request: Request) {
                   </td>
                   <td style="padding:9px 0;">
                     ${safe.passengers}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:9px 0;color:#657382;">
+                    Identificador de Google Ads en URL
+                  </td>
+                  <td style="padding:9px 0;">
+                    ${adsClickIdPresent ? "Sí" : "No"}
                   </td>
                 </tr>
               </table>
